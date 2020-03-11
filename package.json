@@ -1,0 +1,17 @@
+{
+  "name": "extail",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^1.2.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "postcss-cli": "^7.1.0"
+  },
+  "scripts": {
+    "start": "yarn build:css && node app.js",
+    "build:css": "postcss tailwind.css -o static/css/tailwind.generated.css"
+  }
+}
