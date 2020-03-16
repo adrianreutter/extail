@@ -7,8 +7,9 @@ const app = express()
 app.use(express.static('static'))
 
 app.get('*', (req, res) => {
-  
-  fs.readFile(path.join('routes' + req.url + '/index.html'), 'utf8', function(err, contents) {
+  let fileEnding = '.html'
+  if (req.url.endsWith('/')) fileEnding = 'index.html'
+  fs.readFile(path.join('routes' + req.url + fileEnding), 'utf8', function(err, contents) {
     if (err) {
       res.statusCode = 404
       res.send('route not found')
@@ -22,4 +23,3 @@ app.get('*', (req, res) => {
 app.listen(3000, () => {
   console.log('server started on 3000')
 })
-
